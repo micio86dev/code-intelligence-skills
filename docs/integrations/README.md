@@ -21,8 +21,8 @@ Run date: 2026-11-20. **One run per cell**: LLM behavior is not deterministic, s
 | [Claude Code](claude-code.md) 2.1.329 | yes | **yes**: `doctor`, `scan --format json`, correct answer | P1: **not used** (answered from its own reading). P2: used its built-in `security-review` skill instead | **yes** for P1 and P2 |
 | [OpenAI Codex](codex.md) 0.158.0 | yes (`.agents/skills`) | **yes**: `doctor`, `scan --format json`; reported semgrep failed and the scan was incomplete | not tested | **yes** (P1: `doctor` + `scan`) |
 | [OpenCode](opencode.md) 1.2.26 | yes | **yes**: `skill` tool, `scan --format json`, correct answer | not tested | **no** (P1: did not run `code-intel`; it read the files itself) |
-| [Pi](pi.md) 1.5.0 | yes | *unverified*: skill found and read, shell execution blocked by the approval mode | not tested | not tested |
-| [Gentle Shell](gentle-shell.md) 4.8.0 | yes | *unverified*: same as Pi | not tested | not tested |
+| [Pi](pi.md) 1.5.0 | yes | **yes**, with the gentle-pi extension disabled (`-ne`): `doctor`, `scan --format json`, correct answer, key not printed | not tested | not tested |
+| [Gentle Shell](gentle-shell.md) 4.8.0 | yes | *unverified*: its approval mode blocks shell commands in a headless run, and only the user can change that mode | not tested | not tested |
 
 ## What the runs showed
 
