@@ -1,6 +1,6 @@
 {
   "name": "code-intelligence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Teaches Claude Code when and how to run the code-intel CLI for deterministic security and test-quality evidence (secrets, SAST, dependency vulnerabilities, architecture rules, test impact, mutation testing).",
   "author": { "name": "micio86dev" },
   "homepage": "https://github.com/micio86dev/code-intelligence-skills",

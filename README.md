@@ -39,6 +39,23 @@ npx github:micio86dev/code-intelligence-skills install --agent all --dry-run    
 | Claude Code | `~/.claude/skills/code-intelligence` |
 | Codex, OpenCode, Pi, Gentle Shell | `~/.agents/skills/code-intelligence` |
 
+## First use (five minutes)
+
+1. **Install the CLI and the scanners** the skill relies on (the skill never installs anything by itself):
+   ```bash
+   npm install -g code-intelligence
+   brew install gitleaks semgrep osv-scanner      # or follow what `code-intel doctor` prints
+   code-intel doctor
+   ```
+2. **Install the skill** for your agent, then check it landed:
+   ```bash
+   npx code-intelligence-skills install --agent claude     # or codex, opencode, pi, gentle-shell
+   npx code-intelligence-skills status --agent claude
+   ```
+3. **Ask your agent explicitly**, in a repository with uncommitted changes: _"Use the code-intelligence skill to check my changes."_ It should run `code-intel doctor` and then `code-intel scan --format json`, and report findings with their severity and a fix. Vague requests such as "is this safe?" may be answered with the agent's own built-in tools instead; the per-agent results are below.
+4. **To see it catch something**, follow the ten-minute [first test in the CLI README](https://github.com/micio86dev/code-intelligence#first-test-10-minutes-nothing-touches-your-real-projects) first (it needs no agent), then repeat step 3 inside that throwaway repository.
+5. **Remove it** whenever you like: `npx code-intelligence-skills uninstall --agent claude` removes exactly what was installed.
+
 ## Verification status per agent
 
 Whether each agent really discovers and *uses* the skill was tested by running it headless on a throwaway repository, and the results, limitations and exact versions are recorded in **[docs/integrations/](docs/integrations/README.md)**. An agent is only listed as working there if a real invocation was observed. Anything not observed is marked **unverified**.

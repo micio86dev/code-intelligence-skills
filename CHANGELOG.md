@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1]
+
+### Changed
+
+- README: a five-minute first-use guide, npm registry install instructions, and uninstall details per agent. Documentation only; no code change.
+
 ## [0.1.0]
 
 ### Added
