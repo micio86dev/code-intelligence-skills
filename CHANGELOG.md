@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4]
+
+### Changed
+
+- Releases are now published to npm by the release workflow (trusted publishing, with a provenance attestation). Versions up to 0.1.3 were published by hand.
+- Documentation: Pi was verified end to end (with the gentle-pi extension disabled); Gentle Shell remains unverified.
+
 ## [0.1.3]
 
 ### Fixed
