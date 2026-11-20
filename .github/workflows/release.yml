@@ -50,12 +50,19 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh release create "$GITHUB_REF_NAME" ./*.tgz --title "$GITHUB_REF_NAME" --notes-file notes.md
-      - name: Publish to npm (only when a token is configured)
+      - name: Publish to npm (trusted publishing, or a token if one is configured)
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_PUBLISH: ${{ vars.NPM_PUBLISH }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "NPM_TOKEN is not set: skipping npm publish. The GitHub release tarball is the install path."
+          # Opt-in: set the repository variable NPM_PUBLISH=true once npm trusted publishing is configured for
+          # this package (npmjs.com > package > Settings > Trusted Publisher: this repository, release.yml,
+          # environment "release"), or set an NPM_TOKEN secret. Otherwise nothing is published and the GitHub
+          # release tarball is the install path. Either way the package carries a provenance attestation.
+          if [ "$NPM_PUBLISH" != "true" ] && [ -z "$NPM_TOKEN" ]; then
+            echo "npm publishing is not enabled (no NPM_PUBLISH variable, no NPM_TOKEN secret): skipping."
+          elif [ -n "$NPM_TOKEN" ]; then
+            NODE_AUTH_TOKEN="$NPM_TOKEN" npm publish --provenance --access public
           else
             npm publish --provenance --access public
           fi
