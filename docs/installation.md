@@ -30,6 +30,12 @@ Agents that share a directory are installed once. Alternatives that avoid the in
 
 ## Check, update, remove
 
+What each path leaves behind after removal (observed, 2026-11-20):
+
+- `uninstall` removes the files it installed. The empty `skills/` parent directory it may have created stays.
+- Claude Code plugin: `claude plugin uninstall code-intelligence@code-intelligence-skills` and `claude plugin marketplace remove code-intelligence-skills` deactivate it (`installed_plugins.json` is emptied), but Claude Code keeps an inert cached copy under its plugins cache directory.
+- Pi: `pi remove git:github.com/micio86dev/code-intelligence-skills` (add `-l --approve` for a project-local install) removes the package and its files.
+
 ```bash
 code-intelligence-skills status --agent all
 npx github:micio86dev/code-intelligence-skills install --agent claude     # updates when the version changed
