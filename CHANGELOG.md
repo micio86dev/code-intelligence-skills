@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.2]
+
+### Fixed
+
+- Documentation: shell code blocks no longer carry `# comments` (in interactive zsh, the macOS default, they are passed to the command as arguments). Comments now sit in a list below each block.
+
 ## [0.1.1]
 
 ### Changed

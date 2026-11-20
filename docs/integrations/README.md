@@ -36,9 +36,9 @@ Run date: 2026-11-20. **One run per cell**: LLM behavior is not deterministic, s
 ```bash
 cd your-repo-with-changes
 npx github:micio86dev/code-intelligence-skills install --agent <claude|codex|opencode|pi|gentle-shell> --project
-# then, in that agent, in this repository:
-#   "Use the code-intelligence skill to check my uncommitted changes."
 ```
+
+Then, in that agent and in this repository, ask: _"Use the code-intelligence skill to check my uncommitted changes."_
 
 Expect: a call to `code-intel doctor`, then `code-intel scan --format json`, then a short answer that cites rule ids and file:line and never prints a secret. Remove it with `... uninstall --agent <x> --project`.
 

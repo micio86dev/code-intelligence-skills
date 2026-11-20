@@ -28,9 +28,12 @@ Install the CLI first ([instructions](https://github.com/micio86dev/code-intelli
 
 ```bash
 npx github:micio86dev/code-intelligence-skills install --agent claude,pi
-npx github:micio86dev/code-intelligence-skills install --agent codex --project    # this repository only
-npx github:micio86dev/code-intelligence-skills install --agent all --dry-run      # preview, change nothing
+npx github:micio86dev/code-intelligence-skills install --agent codex --project
+npx github:micio86dev/code-intelligence-skills install --agent all --dry-run
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent codex --project`: this repository only
+- `npx github:micio86dev/code-intelligence-skills install --agent all --dry-run`: preview, change nothing
 
 `--agent` takes `claude`, `codex`, `opencode`, `pi`, `gentle-shell` (comma separated) or `all`. Details, paths and alternatives (Claude Code plugin, `pi install`) are in [docs/installation.md](docs/installation.md).
 
@@ -44,14 +47,18 @@ npx github:micio86dev/code-intelligence-skills install --agent all --dry-run    
 1. **Install the CLI and the scanners** the skill relies on (the skill never installs anything by itself):
    ```bash
    npm install -g code-intelligence
-   brew install gitleaks semgrep osv-scanner      # or follow what `code-intel doctor` prints
+   brew install gitleaks semgrep osv-scanner
    code-intel doctor
    ```
+
+- `brew install gitleaks semgrep osv-scanner`: or follow what `code-intel doctor` prints
 2. **Install the skill** for your agent, then check it landed:
    ```bash
-   npx code-intelligence-skills install --agent claude     # or codex, opencode, pi, gentle-shell
+   npx code-intelligence-skills install --agent claude
    npx code-intelligence-skills status --agent claude
    ```
+
+- `npx code-intelligence-skills install --agent claude`: or codex, opencode, pi, gentle-shell
 3. **Ask your agent explicitly**, in a repository with uncommitted changes: _"Use the code-intelligence skill to check my changes."_ It should run `code-intel doctor` and then `code-intel scan --format json`, and report findings with their severity and a fix. Vague requests such as "is this safe?" may be answered with the agent's own built-in tools instead; the per-agent results are below.
 4. **To see it catch something**, follow the ten-minute [first test in the CLI README](https://github.com/micio86dev/code-intelligence#first-test-10-minutes-nothing-touches-your-real-projects) first (it needs no agent), then repeat step 3 inside that throwaway repository.
 5. **Remove it** whenever you like: `npx code-intelligence-skills uninstall --agent claude` removes exactly what was installed.
@@ -68,9 +75,12 @@ All agents read the same skill text and call the same CLI, so the behavior is co
 
 ```bash
 code-intelligence-skills status --agent all
-npx github:micio86dev/code-intelligence-skills install --agent claude      # update
-npx github:micio86dev/code-intelligence-skills uninstall --agent claude    # removes exactly what it installed
+npx github:micio86dev/code-intelligence-skills install --agent claude
+npx github:micio86dev/code-intelligence-skills uninstall --agent claude
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent claude`: update
+- `npx github:micio86dev/code-intelligence-skills uninstall --agent claude`: removes exactly what it installed
 
 The installer records what it installed in `.code-intelligence-skills.json`. It refuses to overwrite a directory it did not create, never writes through a symlink, never replaces files you edited unless you pass `--force`, and keeps any file you added next to the skill when uninstalling. To remove everything: run `uninstall --agent all` (and `--project` for per-repository installs), then uninstall the CLI.
 

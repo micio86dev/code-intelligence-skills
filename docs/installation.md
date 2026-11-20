@@ -8,18 +8,23 @@ See [code-intelligence](https://github.com/micio86dev/code-intelligence#install)
 
 ```bash
 npm install -g code-intelligence
-brew install gitleaks semgrep osv-scanner ast-grep   # the engines you want
+brew install gitleaks semgrep osv-scanner ast-grep
 code-intel doctor
 ```
+
+- `brew install gitleaks semgrep osv-scanner ast-grep`: the engines you want
 
 ## 2. The skill, for the agents you use
 
 ```bash
-# one or more agents, comma separated; nothing happens without --agent
-npx code-intelligence-skills install --agent claude,pi        # from the npm registry; npx github:micio86dev/code-intelligence-skills works too
-npx github:micio86dev/code-intelligence-skills install --agent codex --project   # this repository only
-npx github:micio86dev/code-intelligence-skills install --agent all --dry-run     # preview
+npx code-intelligence-skills install --agent claude,pi
+npx github:micio86dev/code-intelligence-skills install --agent codex --project
+npx github:micio86dev/code-intelligence-skills install --agent all --dry-run
 ```
+
+- `npx code-intelligence-skills install --agent claude,pi`: from the npm registry; npx github:micio86dev/code-intelligence-skills works too
+- `npx github:micio86dev/code-intelligence-skills install --agent codex --project`: this repository only
+- `npx github:micio86dev/code-intelligence-skills install --agent all --dry-run`: preview
 
 | Agent | Installed to (user scope) | Project scope (`--project`) |
 |---|---|---|
@@ -38,9 +43,12 @@ What each path leaves behind after removal (observed, 2026-11-20):
 
 ```bash
 code-intelligence-skills status --agent all
-npx github:micio86dev/code-intelligence-skills install --agent claude     # updates when the version changed
-npx github:micio86dev/code-intelligence-skills uninstall --agent claude   # removes exactly what was installed
+npx github:micio86dev/code-intelligence-skills install --agent claude
+npx github:micio86dev/code-intelligence-skills uninstall --agent claude
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent claude`: updates when the version changed
+- `npx github:micio86dev/code-intelligence-skills uninstall --agent claude`: removes exactly what was installed
 
 ## What the installer will not do
 

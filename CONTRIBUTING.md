@@ -2,8 +2,10 @@
 
 ```bash
 git clone https://github.com/micio86dev/code-intelligence-skills && cd code-intelligence-skills
-npm test          # installer behavior, skill constraints, plugin manifests, pack/install/uninstall
+npm test
 ```
+
+- `npm test`: installer behavior, skill constraints, plugin manifests, pack/install/uninstall
 
 Requires Node.js 22+. There are no dependencies to install.
 

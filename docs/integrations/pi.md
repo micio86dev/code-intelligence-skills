@@ -5,9 +5,12 @@ Version tested: **1.5.0** (`pi -p`). **End-to-end execution was not verified.** 
 ## Install
 
 ```bash
-npx github:micio86dev/code-intelligence-skills install --agent pi            # ~/.agents/skills/code-intelligence
-npx github:micio86dev/code-intelligence-skills install --agent pi --project  # .agents/skills/code-intelligence
+npx github:micio86dev/code-intelligence-skills install --agent pi
+npx github:micio86dev/code-intelligence-skills install --agent pi --project
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent pi`: ~/.agents/skills/code-intelligence
+- `npx github:micio86dev/code-intelligence-skills install --agent pi --project`: .agents/skills/code-intelligence
 
 Alternative, as a Pi package: `pi install git:github.com/micio86dev/code-intelligence-skills` (the repository's `package.json` has a `pi.skills` entry). **Not verified.**
 

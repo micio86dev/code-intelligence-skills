@@ -5,9 +5,12 @@ Verified with Codex CLI **0.158.0** (`codex exec`; see [status](README.md)).
 ## Install
 
 ```bash
-npx github:micio86dev/code-intelligence-skills install --agent codex            # ~/.agents/skills/code-intelligence
-npx github:micio86dev/code-intelligence-skills install --agent codex --project  # .agents/skills/code-intelligence
+npx github:micio86dev/code-intelligence-skills install --agent codex
+npx github:micio86dev/code-intelligence-skills install --agent codex --project
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent codex`: ~/.agents/skills/code-intelligence
+- `npx github:micio86dev/code-intelligence-skills install --agent codex --project`: .agents/skills/code-intelligence
 
 Codex read the skill from the project's `.agents/skills`. Whether it reads `~/.agents/skills` (user scope) was **not** tested here.
 

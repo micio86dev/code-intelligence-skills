@@ -5,9 +5,12 @@ Verified with Claude Code **2.1.329** (see [status](README.md) for method and ca
 ## Install
 
 ```bash
-npx github:micio86dev/code-intelligence-skills install --agent claude            # ~/.claude/skills/code-intelligence
-npx github:micio86dev/code-intelligence-skills install --agent claude --project  # .claude/skills/code-intelligence
+npx github:micio86dev/code-intelligence-skills install --agent claude
+npx github:micio86dev/code-intelligence-skills install --agent claude --project
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent claude`: ~/.claude/skills/code-intelligence
+- `npx github:micio86dev/code-intelligence-skills install --agent claude --project`: .claude/skills/code-intelligence
 
 Claude Code also supports plugins: this repository ships `.claude-plugin/plugin.json` and `marketplace.json` (both pass `claude plugin validate`). Installing through a marketplace was **not verified** (it needs the repository to be public first); the installer path above was.
 

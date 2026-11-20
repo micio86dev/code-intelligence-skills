@@ -5,9 +5,12 @@ Verified with OpenCode **1.2.26** (`opencode run`; see [status](README.md)).
 ## Install
 
 ```bash
-npx github:micio86dev/code-intelligence-skills install --agent opencode            # ~/.agents/skills/code-intelligence
-npx github:micio86dev/code-intelligence-skills install --agent opencode --project  # .agents/skills/code-intelligence
+npx github:micio86dev/code-intelligence-skills install --agent opencode
+npx github:micio86dev/code-intelligence-skills install --agent opencode --project
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent opencode`: ~/.agents/skills/code-intelligence
+- `npx github:micio86dev/code-intelligence-skills install --agent opencode --project`: .agents/skills/code-intelligence
 
 ## Observed
 

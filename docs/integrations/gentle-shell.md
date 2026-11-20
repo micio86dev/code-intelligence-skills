@@ -7,9 +7,12 @@ Version tested: **4.8.0** (`gentle-shell --link -- -p ...`). Gentle Shell is the
 Gentle Shell is built on Pi and reads the shared skills directory, so the same install covers it:
 
 ```bash
-npx github:micio86dev/code-intelligence-skills install --agent gentle-shell            # ~/.agents/skills/code-intelligence
-npx github:micio86dev/code-intelligence-skills install --agent gentle-shell --project  # .agents/skills/code-intelligence
+npx github:micio86dev/code-intelligence-skills install --agent gentle-shell
+npx github:micio86dev/code-intelligence-skills install --agent gentle-shell --project
 ```
+
+- `npx github:micio86dev/code-intelligence-skills install --agent gentle-shell`: ~/.agents/skills/code-intelligence
+- `npx github:micio86dev/code-intelligence-skills install --agent gentle-shell --project`: .agents/skills/code-intelligence
 
 Nothing in `code-intelligence` or in `code-intel` refers to Gentle Shell. It does not replace Gentle AI's orchestration, memory, review or permissions; it adds one skill.
 
