@@ -22,7 +22,7 @@ Run date: 2026-11-20. **One run per cell**: LLM behavior is not deterministic, s
 | [OpenAI Codex](codex.md) 0.158.0 | yes (`.agents/skills`) | **yes**: `doctor`, `scan --format json`; reported semgrep failed and the scan was incomplete | not tested | **yes** (P1: `doctor` + `scan`) |
 | [OpenCode](opencode.md) 1.2.26 | yes | **yes**: `skill` tool, `scan --format json`, correct answer | not tested | **no** (P1: did not run `code-intel`; it read the files itself) |
 | [Pi](pi.md) 1.5.0 | yes | **yes**, with the gentle-pi extension disabled (`-ne`): `doctor`, `scan --format json`, correct answer, key not printed | not tested | not tested |
-| [Gentle Shell](gentle-shell.md) 4.8.0 | yes | *unverified*: its approval mode blocks shell commands in a headless run, and only the user can change that mode | not tested | not tested |
+| [Gentle Shell](gentle-shell.md) 4.8.0 | yes | **yes**, in an interactive session in Auto mode: skill read, `scan`, correct answer, key value not printed (a follow-up quoted its first 8 characters; rule tightened) | not tested | not tested |
 
 ## What the runs showed
 

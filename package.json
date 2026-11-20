@@ -1,6 +1,6 @@
 {
   "name": "code-intelligence-skills",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Agent skill and installer that teach Claude Code, Codex, OpenCode, Pi and Gentle Shell when and how to use the code-intel CLI.",
   "license": "MIT",
   "author": "micio86dev",

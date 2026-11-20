@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.5]
+
+### Fixed
+
+- Skill: the secrets rule now says never to quote any part of a secret, not even a prefix, including when the user asks whether the key is real. An interactive Gentle Shell session had quoted the first characters of a (fake) key in a follow-up answer.
+
+### Changed
+
+- Documentation: Gentle Shell verified end to end in an interactive session; compatibility matrix updated.
+
 ## [0.1.4]
 
 ### Changed

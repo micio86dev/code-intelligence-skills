@@ -42,7 +42,7 @@ Field details: `references/findings.md`. Which command for which situation: `ref
 ## Acting on findings
 
 - Fix real problems in the code you changed, then **re-run the same command** to confirm.
-- **Secrets:** never print, copy or commit the value. Tell the user to rotate the credential; removing it from the file is not enough once it was committed.
+- **Secrets:** never print, copy or commit the value, and never quote any part of it, not even a prefix or the first characters, including when the user asks whether the key is real. Refer to it by file and line and by the rule that matched, and tell the user to open that line themselves and check the key in their provider's console. Tell the user to rotate the credential; removing it from the file is not enough once it was committed.
 - **Dependencies:** upgrade as `remediation` says, then run the project's tests.
 - **False positive:** explain why in one or two sentences. Suppress only with the user's agreement, narrowly and with a reason (`# nosemgrep: <rule-id>` on the line, or a `.gitleaksignore` entry).
 - **Do not** edit `.code-intel.json`, the baseline, `.gitleaks.toml` or exclude globs to make findings disappear. `code-intel baseline` is for when the user decides to accept the current state.
