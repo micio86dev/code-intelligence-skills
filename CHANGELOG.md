@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.3]
+
+### Fixed
+
+- Documentation: `gentle-ai review` cannot receive external evidence (it builds its lenses' context from the frozen candidate), so the skill and the docs no longer suggest handing `code-intel` findings to its lenses; `code-intel` is a pre-review step.
+
+### Added
+
+- Release workflow: opt-in npm trusted publishing with provenance.
+
 ## [0.1.2]
 
 ### Fixed

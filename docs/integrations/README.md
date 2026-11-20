@@ -47,4 +47,4 @@ Expect: a call to `code-intel doctor`, then `code-intel scan --format json`, the
 - One run per cell; one scenario; small diffs. It shows the mechanics work, not how often an agent chooses the skill.
 - Pi and Gentle Shell were **not** verified end to end (see their pages). Gentle Shell is the first integration target; its remaining step is an interactive approval, which a headless run cannot give.
 - The scenario cannot show the value of determinism at scale (for example advisories published after a model's training data); it only shows that the scanner's evidence reaches the answer.
-- Review-pipeline use (handing findings to `gentle-ai review` lenses) is described in the skill but **not** validated through `gentle-ai review` itself.
+- Review-pipeline use: `gentle-ai review` offers no input for external evidence (it builds the lenses' context from the frozen candidate), so `code-intel` findings cannot be handed to its lenses today. The skill uses `code-intel` before a review instead.

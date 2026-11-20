@@ -54,11 +54,11 @@ Field details: `references/findings.md`. Which command for which situation: `ref
 
 ## Feeding a review
 
-When a reviewer or review tool asks for scanner evidence, give it the findings (rule, file:line, severity, remediation) from the JSON, never a secret value. See `references/gentle-review-evidence.md`.
+When a reviewer you launch yourself asks for scanner evidence, give it the findings (rule, file:line, severity, remediation) from the JSON, never a secret value. `gentle-ai review` builds its lenses' context itself and cannot receive this evidence, so run `code-intel` and fix findings before starting that review, and never claim the review included scanner evidence. See `references/gentle-review-evidence.md`.
 
 ## References (load only when needed)
 
 - `references/findings.md`: JSON fields, severities, fingerprints, baseline
 - `references/profiles.md`: scopes, profiles, engines, what each costs
-- `references/gentle-review-evidence.md`: passing evidence to Gentle AI review lenses
+- `references/gentle-review-evidence.md`: scanner evidence around Gentle AI review (what is and is not possible)
 - `references/property-testing.md`: when and how to add property-based tests (technique, no engine)

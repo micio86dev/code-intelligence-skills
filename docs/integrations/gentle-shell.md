@@ -25,9 +25,9 @@ Nothing in `code-intelligence` or in `code-intel` refers to Gentle Shell. It doe
 
 Start `gentle-shell` in a repository with uncommitted changes and ask "Use the code-intelligence skill to check my uncommitted changes". In **Normal** mode approve the shell commands it requests ("Allow once"). Expect `code-intel doctor`, then `code-intel scan --format json`, then a short answer.
 
-## Review evidence (not validated)
+## Review evidence (not possible today)
 
-Gentle AI's `review` lenses are LLM reviewers without tools. The skill tells the parent agent to put the scanner findings into the context it hands them (see [`gentle-review-evidence.md`](../../skills/code-intelligence/references/gentle-review-evidence.md)). That path has **not** been exercised through `gentle-ai review`.
+Gentle AI's `review` lenses are LLM reviewers without tools, and `gentle-ai review` builds their context itself from the frozen candidate; it has no documented input for external evidence. So `code-intel` findings cannot be handed to the lenses, and the skill treats `code-intel` as a step *before* the review (see [`gentle-review-evidence.md`](../../skills/code-intelligence/references/gentle-review-evidence.md)).
 
 ## Headless usage: close stdin
 
