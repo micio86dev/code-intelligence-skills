@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: release
     permissions:
+      actions: read # to read the CI result for this commit
       contents: write
       id-token: write
     steps:
@@ -23,6 +24,12 @@ jobs:
         run: |
           git fetch --no-tags origin main
           git merge-base --is-ancestor "$GITHUB_SHA" origin/main || { echo "tag $GITHUB_REF_NAME is not on main"; exit 1; }
+      - name: CI must have passed for this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ok="$(gh run list --workflow ci.yml --commit "$GITHUB_SHA" --status completed --json conclusion --jq '[.[] | select(.conclusion == "success")] | length')"
+          [ "${ok:-0}" -ge 1 ] || { echo "no successful CI run for $GITHUB_SHA; refusing to release"; exit 1; }
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
