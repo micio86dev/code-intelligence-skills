@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: [22, 24]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+
+  hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0 # scan the whole history for secrets
+          persist-credentials: false
+      - name: Secret scan (gitleaks, full history, checksum-verified)
+        run: |
+          v=8.30.1
+          curl -fsSL -o gl.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${v}/gitleaks_${v}_linux_x64.tar.gz"
+          curl -fsSL -o gl.sums "https://github.com/gitleaks/gitleaks/releases/download/v${v}/gitleaks_${v}_checksums.txt"
+          echo "$(grep " gitleaks_${v}_linux_x64.tar.gz$" gl.sums | cut -d' ' -f1)  gl.tgz" | sha256sum -c -
+          tar -xzf gl.tgz gitleaks
+          ./gitleaks git . --redact --no-banner
+      - name: Lint workflows (checksum-verified actionlint)
+        run: |
+          v=1.7.7
+          curl -fsSL -o al.tgz "https://github.com/rhysd/actionlint/releases/download/v${v}/actionlint_${v}_linux_amd64.tar.gz"
+          curl -fsSL -o al.sums "https://github.com/rhysd/actionlint/releases/download/v${v}/actionlint_${v}_checksums.txt"
+          echo "$(grep " actionlint_${v}_linux_amd64.tar.gz$" al.sums | cut -d' ' -f1)  al.tgz" | sha256sum -c -
+          tar -xzf al.tgz actionlint
+          ./actionlint -color

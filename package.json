@@ -1,0 +1,51 @@
+{
+  "name": "code-intelligence-skills",
+  "version": "0.1.0",
+  "description": "Agent skill and installer that teach Claude Code, Codex, OpenCode, Pi and Gentle Shell when and how to use the code-intel CLI.",
+  "license": "MIT",
+  "author": "micio86dev",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "agent-skills",
+    "claude-code",
+    "codex",
+    "opencode",
+    "gentle-shell",
+    "security",
+    "code-intelligence"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micio86dev/code-intelligence-skills.git"
+  },
+  "homepage": "https://github.com/micio86dev/code-intelligence-skills#readme",
+  "bugs": {
+    "url": "https://github.com/micio86dev/code-intelligence-skills/issues"
+  },
+  "bin": {
+    "code-intelligence-skills": "installer/install.mjs"
+  },
+  "files": [
+    "installer",
+    "skills",
+    "snippets",
+    ".claude-plugin",
+    "docs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "pi": {
+    "skills": [
+      "./skills"
+    ]
+  },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 \"test/**/*.test.mjs\"",
+    "validate": "node scripts/validate.mjs"
+  }
+}

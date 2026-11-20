@@ -1,0 +1,15 @@
+{
+  "name": "code-intelligence-skills",
+  "owner": {
+    "name": "micio86dev"
+  },
+  "plugins": [
+    {
+      "name": "code-intelligence",
+      "description": "Skill for running the code-intel CLI: scan changed files for secrets, vulnerabilities and unsafe code, find affected tests, mutation-test changed code.",
+      "source": "./",
+      "category": "security"
+    }
+  ],
+  "description": "Agent skill for running the code-intel CLI: deterministic security and test-quality evidence on the files you changed."
+}
