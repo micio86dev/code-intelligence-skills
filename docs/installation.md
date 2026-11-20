@@ -7,7 +7,7 @@ You need two things: the **`code-intel` CLI** (and the scanners you want it to d
 See [code-intelligence](https://github.com/micio86dev/code-intelligence#install). In short:
 
 ```bash
-npm install -g github:micio86dev/code-intelligence
+npm install -g code-intelligence
 brew install gitleaks semgrep osv-scanner ast-grep   # the engines you want
 code-intel doctor
 ```
@@ -16,7 +16,7 @@ code-intel doctor
 
 ```bash
 # one or more agents, comma separated; nothing happens without --agent
-npx github:micio86dev/code-intelligence-skills install --agent claude,pi
+npx code-intelligence-skills install --agent claude,pi        # from the npm registry; npx github:micio86dev/code-intelligence-skills works too
 npx github:micio86dev/code-intelligence-skills install --agent codex --project   # this repository only
 npx github:micio86dev/code-intelligence-skills install --agent all --dry-run     # preview
 ```
