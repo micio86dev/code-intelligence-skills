@@ -4,8 +4,9 @@ import { existsSync, mkdtempSync, readdirSync, realpathSync, rmSync } from "node
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, test } from "node:test";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("..", import.meta.url).pathname;
+const root = fileURLToPath(new URL("..", import.meta.url));
 const win = process.platform === "win32";
 const npm = win ? "npm.cmd" : "npm";
 // A clean environment: nothing from the surrounding `npm run` may steer the nested npm commands.

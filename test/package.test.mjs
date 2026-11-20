@@ -3,16 +3,17 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 
-const root = new URL("..", import.meta.url).pathname;
+const root = fileURLToPath(new URL("..", import.meta.url));
 const read = (p) => readFileSync(join(root, p), "utf8");
 const json = (p) => JSON.parse(read(p));
 
 function frontmatter(text) {
-  const m = /^---\n([\s\S]*?)\n---\n/.exec(text);
+  const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n/.exec(text);
   assert.ok(m, "SKILL.md must start with YAML frontmatter");
   const out = {};
-  for (const line of m[1].split("\n")) {
+  for (const line of m[1].split(/\r?\n/)) {
     const kv = /^([a-z-]+):\s*(.*)$/.exec(line);
     if (kv) out[kv[1]] = kv[2].replace(/^"(.*)"$/, "$1");
   }

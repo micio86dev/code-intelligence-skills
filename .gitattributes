@@ -1,0 +1,4 @@
+# Identical bytes on every OS: skill files are hashed by the installer and parsed by agents.
+* text=auto eol=lf
+*.png binary
+*.tgz binary
