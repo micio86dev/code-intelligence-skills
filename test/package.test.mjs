@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { test } from "node:test";
@@ -64,19 +65,19 @@ test("the package has no runtime dependencies and ships only what it needs", () 
   assert.equal(p.files.includes("test"), false);
 });
 
-test("no secrets or local paths are committed in the skill content", () => {
-  const all = [];
-  const walk = (d) => {
-    for (const e of readdirSync(join(root, d), { withFileTypes: true })) {
-      const p = join(d, e.name);
-      if (e.isDirectory()) walk(p);
-      else all.push(p);
-    }
-  };
-  for (const d of ["skills", "docs", "snippets", ".claude-plugin"]) if (existsSync(join(root, d))) walk(d);
-  for (const f of [...all, "README.md"]) {
-    const t = read(f);
+test("no tracked file anywhere contains a local path, a personal identifier, or a secret-shaped string", () => {
+  // Every file git tracks (not a hand-picked list: a generated .atl/ registry once slipped past a narrower check).
+  const tracked = execFileSync("git", ["ls-files", "-z"], { cwd: root, encoding: "utf8" })
+    .split("\0")
+    .filter(Boolean);
+  assert.ok(tracked.length > 10, "expected to list the repository's files");
+  const ignoredByName = /^(\.atl|node_modules)\//;
+  for (const f of tracked) {
+    assert.equal(ignoredByName.test(f), false, `${f}: generated local tooling output must not be tracked`);
+    const t = readFileSync(join(root, f), "utf8");
     assert.equal(/\/Users\/|\/home\/[a-z]+\/|C:\\Users\\/.test(t), false, `${f} contains a local path`);
+    assert.equal(/@gmail\.com|@users\.noreply\.github\.com/.test(t), false, `${f} contains a personal email address`);
     assert.equal(/AKIA[A-Z0-9]{16}|ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}/.test(t), false, `${f} looks like it contains a secret`);
   }
 });
+
